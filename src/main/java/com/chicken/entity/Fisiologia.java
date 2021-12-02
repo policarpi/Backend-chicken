@@ -1,15 +1,19 @@
 package com.chicken.entity;
 
-
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+
+@Table(name = "Fisiologia", indexes = {
+        @Index(name = "idx_fisiologia_altura", columnList = "altura")
+})
 @Entity
-@Getter@Setter
-public class Enderecos   {
+@Getter
+@Setter
+public class Fisiologia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,21 +25,21 @@ public class Enderecos   {
 
     @Column
     @NotNull
-    private String cep;
+    private String tipo;
 
     @Column
     @NotNull
-    private String endereco;
+    private String nome;
 
     @Column
     @NotNull
-    private Integer numeros;
+    private Double peso;
 
-    @Column
-    @NotNull
-    private String cidade;
 
-    @Column
+    @Column(name = "altura")
     @NotNull
-    private String estado;
+    private Double altura;
+
+
+
 }

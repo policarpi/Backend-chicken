@@ -4,14 +4,12 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.jnlp.DownloadService;
 import javax.persistence.*;
-
 
 @Entity
 @Getter
 @Setter
-public class Planos {
+public class Refeicoes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,10 +17,7 @@ public class Planos {
 
     @Column
     @NotNull
-    private Integer plano;
+    private String tiporefeicoes;
 
-    @Column
-    @NotNull
-    private Double valorPlano;
 
 }

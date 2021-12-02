@@ -5,11 +5,13 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 @Entity
 @Getter@Setter
@@ -26,40 +28,91 @@ public class Alimentos {
     @Column(name = "descricao",length = 100)
     private String descricao;
 
-    @Min(value = 5, message = "Quantidade minima para calculo é 5g")
-    @NotEmpty
-    @Column(name = "porcao")
-    private Double porcao;
+    @Column
+    private Double carboidrato;
 
-    @Min(value = 1, message = "Alimento não pode ter menos de 1kcal")
-    @NotEmpty
-    @Column(name = "kcal")
-    private Double kcal;
+    @Column
+    private Double colesterol;
 
-    @Min(value = 1, message = "Alimento não pode ter menos de 1kcal")
-    @NotEmpty
-    @Column(name = "carboidratos")
-    private Double carboidratos;
+    @Column
+    private Double fibra;
 
-    @NotEmpty
-    @Column(name = "gordurasTotais")
-    private Double gordurasTotais;
+    @Column
+    private Double luteinazeaxantina;
 
-    @NotEmpty
-    @Column(name = "gorduraSaturadas")
-    private Double gorduraSaturadas;
+    @Column
+    private Double licopeno;
 
-    @NotEmpty
-    @Column(name = "gorduraTrans")
-    private Double gorduraTrans;
+    @Column
+    private Double niacina;
 
-    @NotEmpty
-    @Column(name = "proteinas")
-    private Double proteinas;
+    @Column
+    private Double proteina;
 
+    @Column
+    private Double retinol;
 
-    @NotEmpty
-    @Column(name = "fibraAlimentar")
-    private Double fibraAlimentar;
+    @Column
+    private Double riboflavina;
 
+    @Column
+    private Double selenio;
+
+    @Column
+    private Double acucartotal;
+
+    @Column
+    private Double tiamina;
+
+    @Column
+    private Double agua;
+
+    @Column
+    private Double gorduramonosaturada;
+
+    @Column
+    private Double gordurapolissaturada;
+
+    @Column
+    private Double gordurasaturada;
+
+    @Column
+    private Double lipidio;
+
+    @Column
+    private Double mineralcalcio;
+
+    @Column
+    private Double mineralscopper;
+
+    @Column
+    private Double mineralferro;
+
+    @Column
+    private Double mineralsmagnesio;
+
+    @Column
+    private Double mineralfosforo;
+
+    @Column
+    private Double mineralpotassio;
+
+    @Column
+    private Double mineralsodio;
+
+    @Column
+    private Double mineralzinco;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Alimentos alimentos = (Alimentos) o;
+        return id != null && Objects.equals(id, alimentos.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

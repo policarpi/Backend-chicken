@@ -7,9 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 @Getter@Setter
@@ -19,6 +17,13 @@ public class Treinos  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "id_equipamento")
+    private Equipametos equipametos;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 
     @Column
     @NotNull
@@ -31,5 +36,9 @@ public class Treinos  {
     @Column
     @NotNull
     private Double peso;
+
+    @Column
+    @NotNull
+    private String ficha;
 
 }

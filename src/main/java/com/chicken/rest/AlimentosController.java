@@ -1,11 +1,13 @@
 package com.chicken.rest;
 
 import com.chicken.entity.Alimentos;
+import com.chicken.entity.Dieta;
 import com.chicken.repository.AlimentosRepository;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -15,20 +17,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/alimentos")
+@CrossOrigin("http://localhost:4200/")
 public class AlimentosController {
 
     @Autowired
     private AlimentosRepository alimentosRepository;
 
     @GetMapping
-    public List<Alimentos>  listar (){
-       return  alimentosRepository.findAll();
+    public List <Alimentos> acharTodos(){
+        return alimentosRepository.findAll();
     }
 
     @Autowired
     public AlimentosController(AlimentosRepository alimentosRepository){
         this.alimentosRepository = alimentosRepository;
     }
+
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -57,7 +62,7 @@ public class AlimentosController {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Alimentos " + id + " não existe em nossa aplicação!"));
     }
-
+/*
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void atualizar(@PathVariable Long id,@Valid @RequestBody Alimentos dadoDaRequisicao){
@@ -79,6 +84,6 @@ public class AlimentosController {
                 })
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "A Alimentos " + id + " não existe em nossa aplicação!"));
-    }
+    }*/
 
 }
