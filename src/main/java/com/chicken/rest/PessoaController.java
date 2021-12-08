@@ -17,8 +17,9 @@ import java.util.List;
 
 
 
-//@RequestMapping("/pessoa")
 @RestController
+@RequestMapping("/pessoa")
+@CrossOrigin("http://localhost:4200/")
 public class PessoaController {
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -29,15 +30,17 @@ public class PessoaController {
     public  PessoaController(PessoaService pessoaService){
         this.pessoaService = pessoaService;
     }
-
-   @GetMapping(path = "/pessoa/{nome}")
+  /*
+   @GetMapping
    public Pessoa getPessoa(@PathVariable("nome")String nome){
         return pessoaService.getPessoa(nome);
-    }
+    }*/
 
+    @GetMapping
     public List<Pessoa> listar(){
         return pessoaRepository.findAll();
     }
+
 
     @Autowired
     public PessoaController(PessoaRepository pessoaRepository) {

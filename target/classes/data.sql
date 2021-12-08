@@ -1,7 +1,25 @@
 INSERT INTO Pessoa (id, cpf, e_mail, nome, sobre_nome) VALUES
-      ('1','08824490113', 'neemias@gmail.com', 'Neemias', 'Casonatto'),
-      ('2','08824490113', 'neemias@gmail.com', 'Neemias', 'Casonatto'),
-      ('3','08824490113', 'neemias@gmail.com', 'Pedro', 'Casonatto');
+      ('1','11234123124', 'neemias@gmail.com', 'Neemias', 'Daed'),
+      ('2','11234123124', 'pedro@gmail.com', 'pedro', 'Daed'),
+      ('3','11234123124', 'Tiago@gmail.com', 'Tiago', 'Daed'),
+      ('4','11234123124', 'Joao@gmail.com', 'Joao', 'Daed'),
+      ('5','11234123124', 'Judas@gmail.com', 'Judas', 'Daed'),
+      ('6','11234123124', 'Marcos@gmail.com', 'Marcos', 'Daed'),
+      ('7','11234123124', 'Paulo@gmail.com', 'Paulo', 'Daed'),
+      ('8','11234123124', 'Noe@gmail.com', 'Noe', 'Daed'),
+      ('9','11234123124', 'Moises@gmail.com', 'Moises', 'Daed'),
+      ('10','11234123124', 'Abraao@gmail.com', 'Abraao', 'Daed'),
+      ('11','11234123124', 'Jo@gmail.com', 'Jo', 'Daed'),
+      ('12','11234123124', 'Isaque@gmail.com', 'Isaque', 'Daed'),
+      ('13','11234123124', 'Ninrode@gmail.com', 'Ninrode', 'Daed'),
+      ('14','11234123124', 'Elias@gmail.com', 'Elias', 'Daed'),
+      ('15','11234123124', 'Eliseu@gmail.com', 'Eliseu', 'Daed'),
+      ('16','11234123124', 'Arao@gmail.com', 'Arao', 'Daed'),
+      ('17','11234123124', 'Kalebe@gmail.com', 'Kalebe', 'Daed'),
+      ('18','11234123124', 'Israel@gmail.com', 'Israel', 'Daed'),
+      ('19','11234123124', 'Adao@gmail.com', 'Adao', 'Daed'),
+      ('20','11234123124', 'Eva@gmail.com', 'Eva', 'Daed'),
+      ('21','11234123124', 'Pedro@gmail.com', 'Pedro', 'Daed');
 
 
 
@@ -136,3 +154,4 @@ INSERT INTO Restricao_Alimentar (id, nome, descricao)
         ('3','Lactoze', 'Intolerante a leite'),
         ('4','Lactoze', 'Intolerante a leite'),
         ('5','Lactoze', 'Intolerante a leite');
+

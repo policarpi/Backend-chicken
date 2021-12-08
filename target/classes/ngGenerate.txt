@@ -1,5 +1,4 @@
-ng --install --routing --package-manager npm --commit --view-encapsulation Emulated
-
+#### git
 
 git init
 git remote add dev git@github.com:policarpi/chicken-Front.git
@@ -11,84 +10,173 @@ git add .
 git commit -m "Adicionado template coreui angular-free"
 git push dev dev
 
+## angular
+
+
+ng --install --routing --package-manager npm --commit --view-encapsulation Emulated
+
 ng s --open  --ssl=true
+
+
+
+ng generate module --routing views/nutricao
+ng generate component --skipTests=true views/
+
+## Atividede Fisica
+
+ng generate module atividadefisicaForms --routing
+ng generate component  atividadefisicaForms --skipTests=true
+
 
 ## Nutricao
 
-ng generate module --routing views/nutricao
-
-ng generate module --routing views/nutricao/alimentos
-ng generate component --skipTests=true views/nutricao/alimentos
-
-ng generate module --routing dieta views/nutricao/dieta
-ng generate component --skipTests=true views/nutricao/dieta
-
-ng generate module --routing views/nutricao/refeicoes
-ng generate component --skipTests=true views/nutricao/refeicoes
-
-ng generate service nutricao --skipTests=true
-
-ng generate service atividadesfisica --skipTests=true
-ng generate service pessoas --skipTests=true
+ng generate module nutricaoForms --routing
+ng generate component  nutricaoForms --skipTests=true
 
 
-## Atividade fisica
+## Pessoa
 
-ng generate module treinos --routing
-ng generate module treinos --skipTests=true
-ng generate component treinos --skipTests=true
+ng generate module pessoa --routing
+ng generate component  pessoa --skipTests=true
 
+#View
+
+## Atividede Fisica
+
+ng generate module atividadefisica --routing
+ng generate component  atividadefisica --skipTests=true
+
+
+## Nutricao
+
+ng generate module nutricao --routing
+ng generate component  nutricao --skipTests=true
+
+
+## Pessoa
+
+ng generate module pessoa --routing
+ng generate component  pessoa --skipTests=true
+
+
+
+ng generate module alimentos --routing
+ng generate module alimentosrestricao --routing
+ng generate module dieta --routing
+ng generate module endrecos --routing
 ng generate module equipamentos --routing
-ng generate module equipamentos --skipTests=true
-ng generate component equipamentos --skipTests=true
-
-
-ng generate module treinos --routing
-ng generate module treinos --skipTests=true
-ng generate component treinos --skipTests=true
-
-ng generate module equipamentos --routing
-ng generate module equipamentos --skipTests=true
-ng generate component equipamentos --skipTests=true
-
-
-ng generate module --routing treinos
-ng generate component --skipTests=true views/atividadefisica/treinosLista
-ng generate component --skipTests=true views/atividadefisica/treinosForm
-ng generate service treinos --skipTests=true
-
-ng generate module --routing equipamentos
-ng generate component --skipTests=true views/atividadefisica/equipamentosLista
-ng generate component --skipTests=true views/atividadefisica/equipamentosForm
-ng generate service equipamentos --skipTests=true
-
-##  Dados de pessoas
-
-ng generate module pessoas --routing
-ng generate module pessoas --skipTests=true
-ng generate component pessoas --skipTests=true
-
-ng generate module endereco --routing
-ng generate module endereco --skipTests=true
-ng generate component endereco --skipTests=true
-
-ng generate module --routing pessoa
-ng generate component --skipTests=true views/register/pessoaLista
-ng generate component --skipTests=true views/register/pessoaForm
-ng generate service pessoa --skipTests=true
-
-ng generate module --routing endereco
-ng generate component --skipTests=true views/register/enderecoLista
-ng generate component --skipTests=true srcviews/register/enderecoForm
-ng generate service endereco --skipTests=true
-
-
-ng generate module --routing planos
-ng generate component --skipTests=true views/ecommerce/planosLista
-ng generate component --skipTests=true views/ecommerce/planosForm
-ng generate service planos --skipTests=true
-
 ng generate module fisiologia --routing
-ng generate module fisiologia --skipTests=true
-ng generate component fisiologia --skipTests=true
+ng generate module pessoa --routing
+ng generate module refeicoes --routing
+ng generate module restricaoalimentar --routing
+ng generate module treinos --routing
 
+
+ng generate component  alimentos  --skipTests=true
+ng generate component  alimentosrestricao  --skipTests=true
+ng generate component  dieta  --skipTests=true
+ng generate component  endrecos  --skipTests=true
+ng generate component  equipamentos --skipTests=true
+ng generate component  fisiologia --skipTests=true
+ng generate component  pessoa --skipTests=true
+ng generate component  refeicoes --skipTests=true
+ng generate component  restricaoalimentar --skipTests=true
+ng generate component  treinos --skipTests=true
+
+#Viws
+
+## Atividede Fisica
+views/
+ng generate module atividadefisica --routing
+ng generate component  atividadefisica --skipTests=true
+
+
+## Nutricao
+views/
+ng generate module nutricao --routing
+ng generate component  nutricao --skipTests=true
+
+
+## Pessoa
+views/
+ng generate module pessoaForms --routing
+ng generate component  pessoaForms --skipTests=true
+
+cd views/nutricao
+ng generate module alimentos --routing
+ng generate module alimentosrestricao --routing
+ng generate module dieta --routing
+ng generate module refeicoes --routing
+ng generate module restricaoalimentar --routing
+ng generate component  alimentos  --skipTests=true
+ng generate component  alimentosrestricao  --skipTests=true
+ng generate component  dieta  --skipTests=true
+ng generate component  refeicoes --skipTests=true
+ng generate component  restricaoalimentar --skipTests=true
+
+
+views/pessoa
+ng generate module pessoa --routing
+ng generate module endrecos --routing
+ng generate module fisiologia --routing
+ng generate component  fisiologia --skipTests=true
+ng generate component  pessoa --skipTests=true
+ng generate component  endrecos  --skipTests=true
+
+
+views/atividadefisica
+ng generate module treinos --routing
+ng generate module equipamentos --routing
+ng generate component  equipamentos --skipTests=true
+ng generate component  treinos --skipTests=true
+
+
+#####
+
+
+# Forms
+
+## Atividede Fisica
+forms/
+ng generate module atividadefisicaForms --routing
+ng generate component  atividadefisicaForms --skipTests=true
+
+
+## Nutricao
+forms/
+ng generate module nutricaoForms --routing
+ng generate component  nutricaoForms --skipTests=true
+
+
+## Pessoa
+forms/
+ng generate module pessoaForms --routing
+ng generate component  pessoaForms --skipTests=true
+
+cd forms/nutricao-forms
+ng generate module alimentosforms --routing
+ng generate module alimentosrestricaoforms --routing
+ng generate module dietaforms --routing
+ng generate module refeicoesforms --routing
+ng generate module restricaoalimentarforms --routing
+ng generate component  alimentosforms  --skipTests=true
+ng generate component  alimentosrestricaoforms  --skipTests=true
+ng generate component  dietaforms  --skipTests=true
+ng generate component  refeicoesforms --skipTests=true
+ng generate component  restricaoalimentarforms --skipTests=true
+
+
+forms/pessoa-forms
+ng generate module pessoaforms --routing
+ng generate module endrecosforms --routing
+ng generate module fisiologiaforms --routing
+ng generate component  fisiologiaforms --skipTests=true
+ng generate component  pessoaforms --skipTests=true
+ng generate component  endrecosforms  --skipTests=true
+
+
+forms/atividadefisica-forms
+ng generate module treinosforms --routing
+ng generate module equipamentosforms --routing
+ng generate component  equipamentosforms --skipTests=true
+ng generate component  treinosforms --skipTests=true

@@ -29,7 +29,7 @@ public class Enderecos   {
 
     @Column
     @NotNull
-    private Integer numeros;
+    private Integer numero;
 
     @Column
     @NotNull

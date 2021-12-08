@@ -26,14 +26,13 @@ public class Pessoa {
 
     @Column
     @NotNull
+    private String dataNacimento;
+
+    @Column
+    @NotNull
     private String eMail;
 
     @Column
     @NotNull
     private String cpf;
-
-
-
-
-
 }

@@ -66,7 +66,7 @@ public class EnderecoController {
                     Enderecos.setCep(dadoDaRequisicao.getCep());
                     Enderecos.setCidade(dadoDaRequisicao.getCidade());
                     Enderecos.setEstado(dadoDaRequisicao.getEstado());
-                    Enderecos.setNumeros(dadoDaRequisicao.getNumeros());
+                    Enderecos.setNumero(dadoDaRequisicao.getNumero());
                     return enderecosRepository.save(Enderecos);
                 })
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,

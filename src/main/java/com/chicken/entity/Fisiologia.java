@@ -29,12 +29,7 @@ public class Fisiologia {
 
     @Column
     @NotNull
-    private String nome;
-
-    @Column
-    @NotNull
     private Double peso;
-
 
     @Column(name = "altura")
     @NotNull
