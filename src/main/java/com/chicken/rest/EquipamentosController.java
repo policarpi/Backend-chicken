@@ -1,6 +1,5 @@
 package com.chicken.rest;
 
-import com.chicken.entity.Enderecos;
 import com.chicken.entity.Equipametos;
 import com.chicken.repository.EquipamentosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/equipamentos")
+@CrossOrigin("http://localhost:4200/")
 public class EquipamentosController {
     @Autowired
     private EquipamentosRepository equipamentosRepository;

@@ -154,4 +154,3 @@ INSERT INTO Restricao_Alimentar (id, nome, descricao)
         ('3','Lactoze', 'Intolerante a leite'),
         ('4','Lactoze', 'Intolerante a leite'),
         ('5','Lactoze', 'Intolerante a leite');
-

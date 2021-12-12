@@ -1,7 +1,6 @@
 package com.chicken.rest;
 
-import com.chicken.entity.Equipametos;
-import com.chicken.entity.Pessoa;
+
 import com.chicken.entity.Treinos;
 import com.chicken.repository.TreinosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,9 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 import java.util.List;
 
+@RestController
+@RequestMapping("/treinos")
+@CrossOrigin("http://localhost:4200/")
 public class TreinosController {
     @Autowired
     private TreinosRepository treinosRepository;

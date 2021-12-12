@@ -19,5 +19,9 @@ public class Refeicoes {
     @NotNull
     private String tiporefeicoes;
 
+    @Column
+    @NotNull
+    private String dia;
+
 
 }

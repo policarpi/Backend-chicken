@@ -1,11 +1,7 @@
 package com.chicken.rest;
 
-import com.chicken.entity.Dieta;
-import com.chicken.entity.Equipametos;
 import com.chicken.entity.Pessoa;
-import com.chicken.repository.EquipamentosRepository;
 import com.chicken.repository.PessoaRepository;
-import com.chicken.service.DietaService;
 import com.chicken.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

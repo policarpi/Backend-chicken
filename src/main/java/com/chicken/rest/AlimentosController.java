@@ -1,13 +1,10 @@
 package com.chicken.rest;
 
 import com.chicken.entity.Alimentos;
-import com.chicken.entity.Dieta;
 import com.chicken.repository.AlimentosRepository;
 
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -62,28 +59,46 @@ public class AlimentosController {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Alimentos " + id + " não existe em nossa aplicação!"));
     }
-/*
+
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void atualizar(@PathVariable Long id,@Valid @RequestBody Alimentos dadoDaRequisicao){
         alimentosRepository
                 .findById(id)
                 .map(Alimentos -> {
+                    Alimentos.setId(dadoDaRequisicao.getId());
                     Alimentos.setNome(dadoDaRequisicao.getNome());
                     Alimentos.setDescricao(dadoDaRequisicao.getDescricao());
-                    Alimentos.setPorcao(dadoDaRequisicao.getPorcao());
-                    Alimentos.setKcal(dadoDaRequisicao.getKcal());
-                    Alimentos.setCarboidratos(dadoDaRequisicao.getCarboidratos());
-                    Alimentos.setGordurasTotais(dadoDaRequisicao.getGordurasTotais());
-                    Alimentos.setGorduraSaturadas(dadoDaRequisicao.getGorduraSaturadas());
-                    Alimentos.setGorduraTrans(dadoDaRequisicao.getGorduraTrans());
-                    Alimentos.setFibraAlimentar(dadoDaRequisicao.getFibraAlimentar());
-                    Alimentos.setProteinas(dadoDaRequisicao.getGorduraSaturadas());
+                    Alimentos.setAcucartotal(dadoDaRequisicao.getAcucartotal());
+                    Alimentos.setAgua(dadoDaRequisicao.getAgua());
+                    Alimentos.setCarboidrato(dadoDaRequisicao.getCarboidrato());
+                    Alimentos.setColesterol(dadoDaRequisicao.getColesterol());
+                    Alimentos.setFibra(dadoDaRequisicao.getFibra());
+                    Alimentos.setGorduramonosaturada(dadoDaRequisicao.getGorduramonosaturada());
+                    Alimentos.setGordurapolissaturada(dadoDaRequisicao.getGordurapolissaturada());
+                    Alimentos.setGordurasaturada(dadoDaRequisicao.getGordurasaturada());
+                    Alimentos.setLicopeno(dadoDaRequisicao.getLicopeno());
+                    Alimentos.setLipidio(dadoDaRequisicao.getLipidio());
+                    Alimentos.setLuteinazeaxantina(dadoDaRequisicao.getLuteinazeaxantina());
+                    Alimentos.setMineralcalcio(dadoDaRequisicao.getMineralcalcio());
+                    Alimentos.setMineralferro(dadoDaRequisicao.getMineralferro());
+                    Alimentos.setMineralfosforo(dadoDaRequisicao.getMineralfosforo());
+                    Alimentos.setMineralpotassio(dadoDaRequisicao.getMineralpotassio());
+                    Alimentos.setMineralscopper(dadoDaRequisicao.getMineralscopper());
+                    Alimentos.setMineralsmagnesio(dadoDaRequisicao.getMineralsmagnesio());
+                    Alimentos.setMineralsodio(dadoDaRequisicao.getMineralsodio());
+                    Alimentos.setMineralzinco(dadoDaRequisicao.getMineralzinco());
+                    Alimentos.setProteina(dadoDaRequisicao.getProteina());
+                    Alimentos.setNiacina(dadoDaRequisicao.getNiacina());
+                    Alimentos.setSelenio(dadoDaRequisicao.getSelenio());
+                    Alimentos.setRetinol(dadoDaRequisicao.getRetinol());
+                    Alimentos.setRiboflavina(dadoDaRequisicao.getRiboflavina());
+                    Alimentos.setTiamina(dadoDaRequisicao.getTiamina());
 
                     return alimentosRepository.save(Alimentos);
                 })
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "A Alimentos " + id + " não existe em nossa aplicação!"));
-    }*/
+    }
 
 }
