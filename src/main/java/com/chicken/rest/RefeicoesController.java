@@ -1,5 +1,6 @@
 package com.chicken.rest;
 
+import com.chicken.entity.Equipametos;
 import com.chicken.entity.Refeicoes;
 import com.chicken.repository.RefeicoesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,12 @@ public class RefeicoesController {
     @Autowired
     private RefeicoesRepository refeicoesRepository;
 
+    @GetMapping
     public List<Refeicoes> listar(){
         return refeicoesRepository.findAll();
     }
+
+
 
     @Autowired
     public RefeicoesController (RefeicoesRepository refeicoesRepository ) {

@@ -18,6 +18,7 @@ public class RestricaoAlimentarController {
     @Autowired
     private RestricaoAlimentarRepository restricaoAlimentarRepository;
 
+    @GetMapping
     public List<RestricaoAlimentar> listar(){
         return restricaoAlimentarRepository.findAll();
     }

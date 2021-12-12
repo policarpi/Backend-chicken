@@ -18,6 +18,7 @@ public class EnderecoController {
     @Autowired
     private EnderecosRepository enderecosRepository;
 
+    @GetMapping
     public List<Enderecos> listar(){
         return enderecosRepository.findAll();
     }

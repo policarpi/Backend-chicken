@@ -19,6 +19,7 @@ public class AlimentosRestricaoController {
     @Autowired
     private AlimentosRestricaoRepository alimentosRestricaoRepository;
 
+    @GetMapping
     public List<AlimentosRestricao> listar(){
         return alimentosRestricaoRepository.findAll();
     }

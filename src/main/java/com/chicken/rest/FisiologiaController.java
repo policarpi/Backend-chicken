@@ -21,6 +21,7 @@ public class FisiologiaController {
     @Autowired
     private FisiologiaRepository fisiologiaRepository ;
 
+    @GetMapping
     public List<Fisiologia> listar(){
         return fisiologiaRepository.findAll();
     }

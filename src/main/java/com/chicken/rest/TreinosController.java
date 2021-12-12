@@ -18,6 +18,7 @@ public class TreinosController {
     @Autowired
     private TreinosRepository treinosRepository;
 
+    @GetMapping
     public List<Treinos> listar(){
         return treinosRepository.findAll();
     }

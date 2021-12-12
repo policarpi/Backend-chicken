@@ -1,5 +1,6 @@
 package com.chicken.rest;
 
+import com.chicken.entity.Alimentos;
 import com.chicken.entity.Equipametos;
 import com.chicken.repository.EquipamentosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class EquipamentosController {
     @Autowired
     public EquipamentosController(EnderecoController enderecoController) {
         this.equipamentosRepository = equipamentosRepository;
+    }
+
+    @GetMapping
+    public List <Equipametos> acharTodos(){
+        return equipamentosRepository.findAll();
     }
 
     @PostMapping
