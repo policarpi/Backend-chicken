@@ -1,8 +1,12 @@
 package com.chicken.rest;
 
 
+import com.chicken.dto.FisiologiaDTO;
 import com.chicken.entity.Fisiologia;
+import com.chicken.entity.Pessoa;
+import com.chicken.entity.Treinos;
 import com.chicken.repository.FisiologiaRepository;
+import com.chicken.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,27 +24,34 @@ public class FisiologiaController {
 
     @Autowired
     private final FisiologiaRepository fisiologiaRepository ;
+    private final PessoaRepository pessoaRepository;
+
+
+
 
     @GetMapping
-    public List<Fisiologia> listar(){
-        return fisiologiaRepository.findAll();
+    public List<Fisiologia> pesquisarNomePessoas(
+            @RequestParam(value = "nome", required = false, defaultValue = "") String nome) {
+        return fisiologiaRepository.findByNome("%" + nome + "%");
     }
+
 
     @Autowired
-    public FisiologiaController (FisiologiaRepository fisiologiaRepository ) {
+    public FisiologiaController(FisiologiaRepository fisiologiaRepository, PessoaRepository pessoaRepository) {
         this.fisiologiaRepository = fisiologiaRepository;
+        this.pessoaRepository = pessoaRepository;
     }
 
-
+/*
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Fisiologia salvar(@Valid @RequestBody Fisiologia fisiologia ){
         return fisiologiaRepository.save(fisiologia);
     }
-
+*/
 
     @GetMapping("{id}")
-    public Fisiologia acharPorId(@PathVariable Long id){
+    public Fisiologia acharPorId(@PathVariable Integer id){
         return fisiologiaRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -49,7 +60,7 @@ public class FisiologiaController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Integer id){
         fisiologiaRepository
                 .findById(id)
                 .map(deletar -> {
@@ -62,7 +73,7 @@ public class FisiologiaController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody Fisiologia dadoDaRequisicao){
+    public void atualizar(@PathVariable Integer id,@Valid @RequestBody Fisiologia dadoDaRequisicao){
         fisiologiaRepository
                 .findById(id)
                 .map(Fisiologia -> {
@@ -76,4 +87,32 @@ public class FisiologiaController {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Fisiologia  " + id + " inexistente"));
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Fisiologia salvar(@Valid @RequestBody FisiologiaDTO fisiologiaDTO) {
+
+        Integer idPessoa = fisiologiaDTO.getIdPessoa();
+        Pessoa valorDaPessoa = pessoaRepository
+                .findById(idPessoa)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Pessoa  " + idPessoa + " não existe em nossa app!"));
+
+         String tipo = fisiologiaDTO.getTipo();
+         Double peso = fisiologiaDTO.getPeso();
+         Double altura = fisiologiaDTO.getAltura();
+
+
+        Fisiologia salvarFisio = new Fisiologia();
+
+        salvarFisio.setPessoa(valorDaPessoa);
+        salvarFisio.setTipo(tipo);
+        salvarFisio.setPeso(peso);
+        salvarFisio.setAltura(altura);
+
+        return fisiologiaRepository.save(salvarFisio);
+
+    }
+
 }

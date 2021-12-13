@@ -7,9 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 
-@Table(name = "Fisiologia", indexes = {
-        @Index(name = "idx_fisiologia_altura", columnList = "altura")
-})
+@Table(name = "Fisiologia", indexes = {@Index(name = "idx_fisiologia_altura", columnList = "altura")})
 @Entity
 @Getter
 @Setter
@@ -17,7 +15,7 @@ public class Fisiologia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
