@@ -37,7 +37,7 @@ public class RestricaoAlimentarController {
 
 
     @GetMapping("{id}")
-    public RestricaoAlimentar acharPorId(@PathVariable Long id){
+    public RestricaoAlimentar acharPorId(@PathVariable Integer id){
         return restricaoAlimentarRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -46,7 +46,7 @@ public class RestricaoAlimentarController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Integer id){
         restricaoAlimentarRepository
                 .findById(id)
                 .map(deletar -> {
@@ -59,7 +59,7 @@ public class RestricaoAlimentarController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody RestricaoAlimentar dadoDaRequisicao){
+    public void atualizar(@PathVariable Integer id,@Valid @RequestBody RestricaoAlimentar dadoDaRequisicao){
         restricaoAlimentarRepository
                 .findById(id)
                 .map(RestricaoAlimentar -> {

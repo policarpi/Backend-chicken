@@ -1,7 +1,11 @@
 package com.chicken.rest;
 
-import com.chicken.entity.AlimentosRestricao;
+import com.chicken.dto.AlimentosRestricaoDTO;
+import com.chicken.dto.TreinoDTO;
+import com.chicken.entity.*;
+import com.chicken.repository.AlimentosRepository;
 import com.chicken.repository.AlimentosRestricaoRepository;
+import com.chicken.repository.RestricaoAlimentarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,24 +22,23 @@ public class AlimentosRestricaoController {
 
     @Autowired
     private final AlimentosRestricaoRepository alimentosRestricaoRepository;
+    private final AlimentosRepository alimentosRepository;
+    private final RestricaoAlimentarRepository restricaoAlimentarRepository ;
 
-    @GetMapping
-    public List<AlimentosRestricao> listar(){
-        return alimentosRestricaoRepository.findAll();
-    }
 
     @Autowired
-    public AlimentosRestricaoController (AlimentosRestricaoRepository alimentosRestricaoRepository) {
+    public AlimentosRestricaoController (AlimentosRestricaoRepository alimentosRestricaoRepository, AlimentosRepository alimentosRepository, RestricaoAlimentarRepository restricaoAlimentarRepository) {
         this.alimentosRestricaoRepository = alimentosRestricaoRepository;
+        this.alimentosRepository = alimentosRepository;
+        this.restricaoAlimentarRepository = restricaoAlimentarRepository;
     }
 
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public AlimentosRestricao salvar(@Valid @RequestBody AlimentosRestricao alimentosRestricao){
-        return alimentosRestricaoRepository.save(alimentosRestricao);
+    @GetMapping
+    public List<AlimentosRestricao> pesquisarNomeAlinentos(
+            @RequestParam(value = "nome", required = false, defaultValue = "") String nome) {
+        return alimentosRestricaoRepository.findByNome("%" + nome + "%");
     }
-
 
     @GetMapping("{id}")
     public AlimentosRestricao acharPorId(@PathVariable Long id){
@@ -44,6 +47,7 @@ public class AlimentosRestricaoController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
                         "Alimentos com restrição " + id + " não encontrado"));
     }
+
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -71,5 +75,33 @@ public class AlimentosRestricaoController {
                 })
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Alimentos com restrição  " + id + " inexistente"));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public AlimentosRestricao salvar(@Valid @RequestBody AlimentosRestricaoDTO alimentosRestricaoDTO) {
+
+        Integer idAlimentos = alimentosRestricaoDTO.getIdAlimentos();
+        Alimentos nomeAlimento = alimentosRepository
+                .findById(idAlimentos)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Alimento  " + idAlimentos + " não existe em nossa app!"));
+
+        Integer idRestricaoAlimentar = alimentosRestricaoDTO.getIdRestricaoAlimentar();
+        RestricaoAlimentar tipoRestricao = restricaoAlimentarRepository
+                .findById(idRestricaoAlimentar)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "A Equipamentos " + idRestricaoAlimentar + " não existe em nosso app!"
+                ));
+
+        AlimentosRestricao saveRestricaAlim  = new AlimentosRestricao();
+
+        saveRestricaAlim.setAlimentos(nomeAlimento);
+        saveRestricaAlim.setRestricaoAlimentar(tipoRestricao);
+
+        return alimentosRestricaoRepository.save(saveRestricaAlim);
+
     }
 }

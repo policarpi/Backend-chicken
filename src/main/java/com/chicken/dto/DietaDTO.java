@@ -1,8 +1,5 @@
 package com.chicken.dto;
 
-import com.chicken.entity.Alimentos;
-import com.chicken.entity.Pessoa;
-import com.chicken.entity.Refeicoes;
 import lombok.Getter;
 import lombok.Setter;
 
