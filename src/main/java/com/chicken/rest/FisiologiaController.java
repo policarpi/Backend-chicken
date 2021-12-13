@@ -19,7 +19,7 @@ public class FisiologiaController {
 
 
     @Autowired
-    private FisiologiaRepository fisiologiaRepository ;
+    private final FisiologiaRepository fisiologiaRepository ;
 
     @GetMapping
     public List<Fisiologia> listar(){

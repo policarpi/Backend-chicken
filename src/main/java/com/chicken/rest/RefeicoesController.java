@@ -18,7 +18,7 @@ public class RefeicoesController {
 
 
     @Autowired
-    private RefeicoesRepository refeicoesRepository;
+    private final RefeicoesRepository refeicoesRepository;
 
     @GetMapping
     public List<Refeicoes> listar(){
@@ -41,7 +41,7 @@ public class RefeicoesController {
 
 
     @GetMapping("{id}")
-    public Refeicoes acharPorId(@PathVariable Long id){
+    public Refeicoes acharPorId(@PathVariable Integer id){
         return refeicoesRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -50,7 +50,7 @@ public class RefeicoesController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Integer id){
         refeicoesRepository
                 .findById(id)
                 .map(deletar -> {
@@ -63,7 +63,7 @@ public class RefeicoesController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody Refeicoes dadoDaRequisicao){
+    public void atualizar(@PathVariable Integer id,@Valid @RequestBody Refeicoes dadoDaRequisicao){
         refeicoesRepository
                 .findById(id)
                 .map(Refeicoes -> {

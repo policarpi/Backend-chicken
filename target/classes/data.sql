@@ -136,18 +136,7 @@ INSERT INTO Refeicoes (id,tiporefeicoes)
         ('5','Jantar'),
         ('6','Ceia');
 
-INSERT INTO Dieta (id,id_pessoa, id_alimentos,id_refeicoes, quantidade)
- VALUES ('1','1','1','1','110'),
-        ('2','1','1','1','110'),
-        ('3','1','1','1','110'),
-        ('4','1','1','1','110'),
-        ('5','3','3','4','110'),
-        ('6','3','1','1','110'),
-        ('7','3','6','6','110'),
-        ('8','1','6','6','110'),
-        ('9','1','1','6','110'),
-        ('10','1','1','3','110'),
-        ('11','1','1','2','110');
+
 
 INSERT INTO Restricao_Alimentar (id, nome, descricao)
  VALUES ('1','Lactoze', 'Intolerante a leite'),

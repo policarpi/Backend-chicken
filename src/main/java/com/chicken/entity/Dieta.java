@@ -6,6 +6,8 @@ import lombok.Setter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter@Setter
@@ -19,11 +21,9 @@ public class Dieta {
     @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
 
-
     @ManyToOne
     @JoinColumn(name = "id_alimentos")
     private Alimentos alimentos;
-
 
     @ManyToOne
     @JoinColumn(name = "id_refeicoes")
@@ -32,6 +32,5 @@ public class Dieta {
     @Column
     @NotNull
     private Double quantidade;
-
 
 }

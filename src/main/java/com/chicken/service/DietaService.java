@@ -1,5 +1,6 @@
 package com.chicken.service;
 
+import com.chicken.entity.Alimentos;
 import com.chicken.entity.Dieta;
 import com.chicken.repository.DietaRepository;
 
@@ -13,13 +14,11 @@ public class DietaService {
         this.dietaRepository = dietaRepository;
     }
 
-    public Dieta getDieta(Long id){
-        return  dietaRepository.findDieta(id);
-    }
 
     public List<Dieta> getDieta(String nome){
         return dietaRepository.findByNomePessoa(nome);
     }
+
 
 
 }

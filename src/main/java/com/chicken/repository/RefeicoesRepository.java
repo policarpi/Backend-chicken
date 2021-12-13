@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RefeicoesRepository extends JpaRepository <Refeicoes, Long> {
+public interface RefeicoesRepository extends JpaRepository <Refeicoes, Integer> {
 }

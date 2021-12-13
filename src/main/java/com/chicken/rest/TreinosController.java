@@ -38,22 +38,6 @@ public class TreinosController {
         return treinosRepository.findByNome("%" + nome + "%");
     }
 
-
-
-   /*
-    public List<Treinos> listar(){
-        return treinosRepository.findAll();
-    }
-    */
-
-
-/*
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Treinos salvar(@Valid @RequestBody Treinos treinos ){
-        return treinosRepository.save(treinos);
-    }*/
-
     @GetMapping("{id}")
     public Treinos acharPorId(@PathVariable Long id) {
         return treinosRepository
@@ -74,27 +58,6 @@ public class TreinosController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Endereço " + id + " "));
     }
-/*
-    @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody Treinos dadoDaRequisicao){
-        treinosRepository
-                .findById(id)
-                .map(Treino -> {
-
-                    Treino.setId(dadoDaRequisicao.getId());
-                    Treino.setPessoa(dadoDaRequisicao.getPessoa());
-                    Treino.setPeso(dadoDaRequisicao.getPeso());
-                    Treino.setRepeticao(dadoDaRequisicao.getRepeticao());
-                    Treino.setQuantidade(dadoDaRequisicao.getQuantidade());
-                    Treino.setFicha(dadoDaRequisicao.getFicha());
-                    return treinosRepository.save(Treino);
-                })
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "Treino   " + id + " inexistente"));
-    }
-*/
-
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -107,27 +70,28 @@ public class TreinosController {
                         HttpStatus.BAD_REQUEST,
                         "Pessoa  " + idPessoa + " não existe em nossa app!"));
 
-        Integer idEquipamentos = treinoDTO.getIdEquipamentos();
-        Equipamentos tipoEquimanto = equipamentosRepository
-                .findById(idEquipamentos)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.BAD_REQUEST,
-                        "A Equipamentos " + idEquipamentos + " não existe em nosso app!"
-                ));
-                Integer quantidade = treinoDTO.getQuantidade();
-                Integer repeticao = treinoDTO.getRepeticao();
-                Double peso = treinoDTO.getPeso();
-                String ficha = treinoDTO.getFicha();
+                    Integer idEquipamentos = treinoDTO.getIdEquipamentos();
+                    Equipamentos tipoEquimanto = equipamentosRepository
+                    .findById(idEquipamentos)
+                    .orElseThrow(() -> new ResponseStatusException(
+                            HttpStatus.BAD_REQUEST,
+                            "A Equipamentos " + idEquipamentos + " não existe em nosso app!"
+                    ));
+                    Integer quantidade = treinoDTO.getQuantidade();
+                    Integer repeticao = treinoDTO.getRepeticao();
+                    Double peso = treinoDTO.getPeso();
+                    String ficha = treinoDTO.getFicha();
 
-                Treinos treinosSalvar = new Treinos();
+                    Treinos treinosSalvar = new Treinos();
 
-                treinosSalvar.setPessoa(valorDaPessoa);
-                treinosSalvar.setEquipamentos(tipoEquimanto);
-                treinosSalvar.setQuantidade(quantidade);
-                treinosSalvar.setRepeticao(repeticao);
-                treinosSalvar.setPeso(peso);
-                treinosSalvar.setFicha(ficha);
+                    treinosSalvar.setPessoa(valorDaPessoa);
+                    treinosSalvar.setEquipamentos(tipoEquimanto);
+                    treinosSalvar.setQuantidade(quantidade);
+                    treinosSalvar.setRepeticao(repeticao);
+                    treinosSalvar.setPeso(peso);
+                    treinosSalvar.setFicha(ficha);
 
-        return treinosRepository.save(treinosSalvar);
+                    return treinosRepository.save(treinosSalvar);
+
     }
 }

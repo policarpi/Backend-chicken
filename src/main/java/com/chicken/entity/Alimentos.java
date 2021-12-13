@@ -1,6 +1,7 @@
 package com.chicken.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
@@ -11,7 +12,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter@Setter
@@ -19,7 +22,7 @@ public class Alimentos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, length = 50)
     private String nome;
@@ -102,6 +105,8 @@ public class Alimentos {
 
     @Column
     private Double mineralzinco;
+
+
 
     @Override
     public boolean equals(Object o) {

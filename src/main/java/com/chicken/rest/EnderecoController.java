@@ -16,7 +16,7 @@ import java.util.List;
 public class EnderecoController {
 
     @Autowired
-    private EnderecosRepository enderecosRepository;
+    private final EnderecosRepository enderecosRepository;
 
     @GetMapping
     public List<Enderecos> listar(){

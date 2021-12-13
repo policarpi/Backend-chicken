@@ -15,12 +15,4 @@ public interface TreinosRepository extends JpaRepository<Treinos, Long> {
     @Query(" select n from Treinos n join n.pessoa a where upper(a.nome) like upper(:nome) ")
     List<Treinos> findByNome(@Param("nome") String nome);
 
-
-
- /*   @Query(" select n from Treinos n join n.pessoa a where upper(a.nome) like upper(:nome) and" +
-            "select n from Treinos n join n.equipamentos a where upper(a.nome) like upper(:nome)  ")
-    List<Treinos> findByNome(@Param("nome") String nome);
-*/
-
-
 }

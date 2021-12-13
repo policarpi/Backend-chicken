@@ -16,7 +16,7 @@ import java.util.List;
 public class RestricaoAlimentarController {
 
     @Autowired
-    private RestricaoAlimentarRepository restricaoAlimentarRepository;
+    private final RestricaoAlimentarRepository restricaoAlimentarRepository;
 
     @GetMapping
     public List<RestricaoAlimentar> listar(){

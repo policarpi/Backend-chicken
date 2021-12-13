@@ -18,7 +18,7 @@ import java.util.List;
 public class AlimentosController {
 
     @Autowired
-    private AlimentosRepository alimentosRepository;
+    private final AlimentosRepository alimentosRepository;
 
     @GetMapping
     public List <Alimentos> acharTodos(){
@@ -40,7 +40,7 @@ public class AlimentosController {
 
 
     @GetMapping("{id}")
-    public Alimentos acharPorId(@PathVariable Long id){
+    public Alimentos acharPorId(@PathVariable Integer id){
         return alimentosRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -49,7 +49,7 @@ public class AlimentosController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Integer id){
         alimentosRepository
                 .findById(id)
                 .map(AlimentosASerExcluida -> {
@@ -62,7 +62,7 @@ public class AlimentosController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody Alimentos dadoDaRequisicao){
+    public void atualizar(@PathVariable Integer id,@Valid @RequestBody Alimentos dadoDaRequisicao){
         alimentosRepository
                 .findById(id)
                 .map(Alimentos -> {
