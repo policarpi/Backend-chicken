@@ -1,8 +1,6 @@
 package com.chicken.entity;
 
 
-
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,26 +17,22 @@ public class Treinos  {
 
     @ManyToOne
     @JoinColumn(name = "id_equipamento")
-    private Equipametos equipametos;
+    private Equipamentos equipamentos;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
 
     @Column
-    @NotNull
     private Integer quantidade;
 
     @Column
-    @NotNull
     private Integer repeticao;
 
     @Column
-    @NotNull
     private Double peso;
 
     @Column
-    @NotNull
     private String ficha;
 
 }

@@ -1,7 +1,6 @@
 package com.chicken.rest;
 
-import com.chicken.entity.Alimentos;
-import com.chicken.entity.Equipametos;
+import com.chicken.entity.Equipamentos;
 import com.chicken.repository.EquipamentosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +17,6 @@ public class EquipamentosController {
     @Autowired
     private EquipamentosRepository equipamentosRepository;
 
-    public List<Equipametos> listar(){
-        return equipamentosRepository.findAll();
-    }
 
     @Autowired
     public EquipamentosController(EnderecoController enderecoController) {
@@ -28,18 +24,18 @@ public class EquipamentosController {
     }
 
     @GetMapping
-    public List <Equipametos> acharTodos(){
+    public List<Equipamentos> acharTodos() {
         return equipamentosRepository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Equipametos salvar(@Valid @RequestBody Equipametos equipametos ){
-        return equipamentosRepository.save(equipametos);
+    public Equipamentos salvar(@Valid @RequestBody Equipamentos equipamentos) {
+        return equipamentosRepository.save(equipamentos);
     }
 
     @GetMapping("{id}")
-    public Equipametos acharPorId(@PathVariable Long id){
+    public Equipamentos acharPorId(@PathVariable Integer id) {
         return equipamentosRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -48,28 +44,29 @@ public class EquipamentosController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Integer id) {
         equipamentosRepository
                 .findById(id)
                 .map(endereRuim -> {
                     equipamentosRepository.delete(endereRuim);
                     return Void.TYPE;
                 })
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Endereço " + id + " "));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody Equipametos dadoDaRequisicao){
+    public void atualizar(@PathVariable Integer id, @Valid @RequestBody Equipamentos dadoDaRequisicao) {
         equipamentosRepository
                 .findById(id)
-                .map(Equipametos -> {
-                    Equipametos.setId(dadoDaRequisicao.getId());
-                    Equipametos.setNome(dadoDaRequisicao.getNome());
-                    return equipamentosRepository.save(Equipametos);
+                .map(Equipamentos -> {
+                    Equipamentos.setId(dadoDaRequisicao.getId());
+                    Equipamentos.setEquipamentosnome(dadoDaRequisicao.getEquipamentosnome());
+                    Equipamentos.setDescricao(dadoDaRequisicao.getDescricao());
+                    return equipamentosRepository.save(Equipamentos);
                 })
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Equipamentos   " + id + " inexistente"));
     }
 }

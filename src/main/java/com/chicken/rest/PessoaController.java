@@ -50,7 +50,7 @@ public class PessoaController {
     }
 
     @GetMapping("{id}")
-    public Pessoa acharPorId(@PathVariable Long id){
+    public Pessoa acharPorId(@PathVariable Integer id) {
         return pessoaRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -59,20 +59,20 @@ public class PessoaController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Integer id) {
         pessoaRepository
                 .findById(id)
                 .map(PessoaRuim -> {
                     pessoaRepository.delete(PessoaRuim);
                     return Void.TYPE;
                 })
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Endereço " + id + " "));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id,@Valid @RequestBody Pessoa dadoDaRequisicao){
+    public void atualizar(@PathVariable Integer id, @Valid @RequestBody Pessoa dadoDaRequisicao) {
         pessoaRepository
                 .findById(id)
                 .map(Pessoa -> {
@@ -82,7 +82,7 @@ public class PessoaController {
                     Pessoa.setSobreNome(dadoDaRequisicao.getSobreNome());
                     return pessoaRepository.save(Pessoa);
                 })
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Pessoa   " + id + " inexistente"));
     }
 }

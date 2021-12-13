@@ -1,6 +1,5 @@
 package com.chicken.rest;
 
-import com.chicken.entity.Equipametos;
 import com.chicken.entity.Refeicoes;
 import com.chicken.repository.RefeicoesRepository;
 import org.springframework.beans.factory.annotation.Autowired;

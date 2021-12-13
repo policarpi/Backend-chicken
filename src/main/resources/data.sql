@@ -23,9 +23,10 @@ INSERT INTO Pessoa (id, cpf, e_mail, nome, sobre_nome) VALUES
 
 
 
-INSERT INTO Equipametos (id,nome) VALUES
-        ('1','08824490113'),
-        ('2','08824490113');
+INSERT INTO Equipamentos (id,equipamentosnome) VALUES
+        ('1','Stif'),
+        ('2','Barra Olimpica'),
+        ('3','haletrs');
 
 INSERT INTO Alimentos (Id, nome,descricao,carboidrato, colesterol, fibra,luteinazeaxantina, licopeno, niacina, proteina,retinol, riboflavina,selenio, acucartotal, tiamina, agua, gorduramonosaturada,gordurapolissaturada, gordurasaturada,lipidio,mineralcalcio,mineralscopper,mineralferro,mineralsmagnesio,mineralfosforo,mineralpotassio,mineralsodio,mineralzinco)
 VALUES
@@ -154,3 +155,8 @@ INSERT INTO Restricao_Alimentar (id, nome, descricao)
         ('3','Lactoze', 'Intolerante a leite'),
         ('4','Lactoze', 'Intolerante a leite'),
         ('5','Lactoze', 'Intolerante a leite');
+
+INSERT INTO Treinos (id,id_equipamento, id_pessoa,quantidade,repeticao,peso,ficha)
+ VALUES ('1','1','1' , '4', '3', '25','A'),
+        ('2','1','1' , '1', '3', '25','A'),
+        ('3','1','1' , '1', '3', '25','A');

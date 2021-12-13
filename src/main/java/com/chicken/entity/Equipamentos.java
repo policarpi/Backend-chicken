@@ -10,14 +10,17 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Equipametos {
+public class Equipamentos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Column
     @NotNull
-    private String nome;
+    private String equipamentosnome;
+
+    @Column
+    private String descricao;
 
 }
