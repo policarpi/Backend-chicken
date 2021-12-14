@@ -8,8 +8,8 @@ import lombok.Setter;
 public class AlimentosRestricaoDTO {
 
 
-     Integer idAlimentos;
-     Integer idRestricaoAlimentar;
+    Integer idAlimentos;
+    Integer idRestricaoAlimentar;
 
     public AlimentosRestricaoDTO() {
 
