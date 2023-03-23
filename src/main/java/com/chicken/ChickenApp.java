@@ -12,9 +12,8 @@ public class ChickenApp {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(ChickenApp.class, args);
 
-
+        SpringApplication.run(ChickenApp.class,args);
 
     }
 }
